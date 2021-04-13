@@ -1,0 +1,27 @@
+https://lightoj.com/problem/digits-of-factorial
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+double dp[1000002];
+
+double n_base_fact_digit(){
+    dp[0]=0;
+    for(int i=1;i<=1000001;i++){
+        dp[i] = dp[i-1]+log(i);
+    }
+}
+
+int main() {
+    int n,base, cases;
+    n_base_fact_digit();
+    scanf("%d", &cases);
+    for (int caseno = 1; caseno <= cases; ++caseno) {
+         //memset(dp,-1,sizeof(dp));
+         cin>>n>>base;
+         cout<<"Case "<<caseno<<": "<<long(dp[n]/log(base))+1<<endl;
+
+    }
+    return 0;
+}
